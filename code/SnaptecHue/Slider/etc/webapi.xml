@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/snaptechueSliderSlide/:slideId" method="GET">
+		<service class="SnaptecHue\Slider\Api\SlideRepositoryInterface" method="getById" />
+		<resources>
+			<resource ref="SnaptecHue_Slider::slide" />
+		</resources>
+	</route>
+	<route url="/V1/snaptechueSliderSlide/search" method="GET">
+		<service class="SnaptecHue\Slider\Api\SlideRepositoryInterface" method="getList" />
+		<resources>
+			<resource ref="anonymous" />
+		</resources>
+	</route>
+	<route url="/V1/snaptechueSliderSlide" method="POST">
+		<service class="SnaptecHue\Slider\Api\SlideRepositoryInterface" method="save" />
+		<resources>
+			<resource ref="anonymous" />
+			<!-- <resource ref="SnaptecHue_Slider::slide_save" /> -->
+		</resources>
+	</route>
+	<route url="/V1/snaptechueSliderSlide/:id" method="PUT">
+		<service class="SnaptecHue\Slider\Api\SlideRepositoryInterface" method="save" />
+		<resources>
+			<resource ref="SnaptecHue_Slider::slide_save" />
+		</resources>
+	</route>
+	<route url="/V1/snaptechueSliderSlide/:slideId" method="DELETE">
+		<service class="SnaptecHue\Slider\Api\SlideRepositoryInterface" method="deleteById" />
+		<resources>
+			<resource ref="SnaptecHue_Slider::slide_delete" />
+		</resources>
+	</route>
+	<route url="/V1/customer/order/list" method="GET">
+		<service class="SnaptecHue\Slider\Api\CustomerOrderInterface" method="getCustomerOrderList" />
+		<resources>
+			<resource ref="anonymous" />
+		</resources>
+		<!-- <data>
+			<parameter name="fromDate" force="true">%fromDate%</parameter>
+			<parameter name="toDate" force="true">%toDate%</parameter>
+		</data> -->
+	</route>
+</routes>

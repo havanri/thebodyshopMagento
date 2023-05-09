@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <payment>
+            <custom_payment>
+                <payment_action>true</payment_action> <!-- You can use another method like
+                authorize,capture etc.  -->
+                <model>SnaptecHue\Payment\Model\PaymentMethod</model>
+                <title>Snaptec Custom Payment</title>
+                <order_status>pending</order_status>
+                <active>1</active>
+                <allowspecific>0</allowspecific> <!-- Set your default order status -->
+            </custom_payment>
+        </payment>
+    </default>
+</config>

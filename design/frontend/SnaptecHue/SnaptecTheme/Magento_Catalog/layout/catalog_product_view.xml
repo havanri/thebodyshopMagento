@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="2columns-left">
+    <body>
+        <referenceBlock name="product.info.addtocart">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Magento_Catalog::product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="head.additional">
+            <block class="Magento\Framework\View\Element\Template" name="jquery">
+                <arguments>
+                    <argument name="template" xsi:type="string">Magento_Theme::jquery.phtml</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View\Description" name="product.attribute.product_video" template="Magento_Catalog::product/view/video.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getProductVideo</argument>
+                    <argument name="at_code" xsi:type="string">product_video</argument>
+                    <argument name="css_class" xsi:type="string">product-video</argument>
+                    <argument name="at_label" translate="true" xsi:type="string">Product Video</argument>
+                    <argument name="add_attribute" xsi:type="string">itemprop="productVideo"</argument>
+                </arguments>
+            </block>
+            
+            <block class="Magento\Catalog\Block\Product\View\Description" name="product.attribute.product_brand" template="Magento_Catalog::product/view/brand.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getProductBrand</argument>
+                    <argument name="at_code" xsi:type="string">product_brand</argument>
+                    <argument name="css_class" xsi:type="string">product-brand</argument>
+                    <argument name="at_label" translate="true" xsi:type="string">Product Brand</argument>
+                    <argument name="add_attribute" xsi:type="string">itemprop="productBrand"</argument>
+                    <argument name="at_type" xsi:type="string">text</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

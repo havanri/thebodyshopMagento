@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+	<type name="snaptechue_practice" instance="SnaptecHue\Practice\Model\Cache">
+		<label>
+			SnaptecHue Practice Example Cache
+		</label>
+		<description>
+			Example cache from SnaptecHue Practice module.
+		</description>
+	</type>
+</config>

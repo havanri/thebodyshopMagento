@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="snaptechue_updatestock" instance="SnaptecHue\Command\Console\Command\UpdateStock"
+            method="execute">
+            <schedule>* 6 * * *</schedule>
+        </job>
+        <job name="snaptechue_updatestock2" instance="SnaptecHue\Command\Console\Command\UpdateStock"
+            method="execute">
+            <schedule>* 18 * * *</schedule>
+        </job>
+    </group>
+</config>

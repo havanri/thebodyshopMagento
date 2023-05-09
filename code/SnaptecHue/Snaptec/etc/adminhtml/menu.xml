@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd" >
+    <menu>
+        <add id="SnaptecHue_Snaptec::snaptec" title="Snaptec" module="SnaptecHue_Snaptec" dependsOnConfig="snaptec/snaptec_group/disable_output" sortOrder="20" ifconfig="snaptec/snaptec_group/disable_output"   resource="Magento_Backend::content" />
+        <add id="SnaptecHue_Snaptec::brand" title="Brand" module="SnaptecHue_Snaptec" sortOrder="10" parent="SnaptecHue_Snaptec::snaptec" action="snaptec/brand/index" resource="Magento_Backend::content"/>
+    </menu>
+</config>

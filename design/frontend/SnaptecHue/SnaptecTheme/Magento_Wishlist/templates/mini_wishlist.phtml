@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Wishlist\Block\Customer\Sidebar $block */
+?>
+<?php
+$wishlstViewModel = $block->getData('wishlistDataViewModel');
+?>
+<?php if ($wishlstViewModel->isAllow()) : ?>
+    <li class="list-li">
+        <a class="action details" href="<?= $block->escapeUrl($wishlstViewModel->getListUrl()) ?>" title="<?= $block->escapeHtmlAttr(__('Go to Wish List')) ?>">
+            <i class="bi bi-heart">
+                <div class="block block-wishlist" data-bind="scope: 'wishlist'">
+                    <div class="block-title">
+                        <!-- ko if: wishlist().counter -->
+                        <span data-bind="text: wishlist().counter.split(' ')[0]" class="counter"></span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </i>
+        </a>
+    </li>
+    <script type="text/x-magento-init">
+        {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "wishlist": {
+                        "component": "Magento_Wishlist/js/view/wishlist"
+                    }
+                }
+            }
+        }
+    }
+</script>
+<?php endif ?>

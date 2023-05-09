@@ -1,0 +1,26 @@
+<?php
+/** @var SnaptecHue\Catalog\Block\Category\CustomCategory  */
+$categories = $block->categoryByParentId(5);
+?>
+<div class="shopbycate" style="background-color: #004236!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding-right: 105px;
+    padding-left: 105px;
+    margin: 0 auto;padding-bottom: 30px;">
+                <h2 class="filterproduct-title"><span class="content" style="color:#fff;font-size:30px;"><strong>Shop by skin type</strong></span></h2>
+                <div class="category-list owl-carousel owl-theme owl-loaded owl-drag" style=" display: flex;flex-wrap: nowrap;border-bottom: 3px solid white;">
+                    <?php foreach ($categories as $category) : ?>
+                        <div class="category-item" style="flex: 0 0 auto;">
+                            <a href="<?= $category->getUrl(); ?>" style="text-decoration:none;">
+                                <img src="<?= $block->getCategoryImageUrl($category); ?>" alt="<?= $category->getName(); ?>" />
+                                <h2><?= $category->getName(); ?></h2>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

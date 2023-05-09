@@ -1,0 +1,24 @@
+<?php
+/** @var \Magento\Catalog\Model\Category $category */
+$category = $block->getCurrentCategory();
+$descriptionCustom = $category->getData('description_custom');
+$thumbnailCustom = $category->getData('thumbnail_custom');
+
+?>
+<div class="category-custom-container">
+<?php if ($descriptionCustom): ?>
+    <div class="category-description-custom w-50">
+        <?= /* @noEscape */ $this->helper(Magento\Catalog\Helper\Output::class)->categoryAttribute(
+            $category,
+            $descriptionCustom,
+            'description_custom'
+        ) ?>
+    </div>
+<?php endif; ?>
+<?php if ($thumbnailCustom): ?>
+    <div class="category-thumbnail-custom w-50">
+        <?php /* add your custom code here to display the thumbnail_custom */ ?>
+        <img class="w-100" src="<?= $block->getImageUrlCustom();?>" alt="<?= $block->escapeHtml($category->getName()); ?>" />
+    </div>
+<?php endif; ?>
+</div>

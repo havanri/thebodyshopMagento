@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="SnaptecHue\Slider\Api\Data\SlideInterface" type="SnaptecHue\Slider\Model\Slide" />
+	<preference for="SnaptecHue\Slider\Api\CustomerOrderInterface" type="SnaptecHue\Slider\Model\CustomerOrder" />
+	<preference for="SnaptecHue\Slider\Api\SlideRepositoryInterface" type="SnaptecHue\Slider\Model\SlideRepository" />
+	<type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="add-custom-attribute-to-order-extension-attributes" type="SnaptecHue\Slider\Plugin\OrderGet" sortOrder="15" />
+    </type>
+    <preference for="SnaptecHue\Slider\Api\Data\CustomAttributeInterface" type="SnaptecHue\Slider\Model\CustomAttribute" />
+	<preference for="SnaptecHue\Slider\Api\CustomAttributeRepositoryInterface" type="SnaptecHue\Slider\Model\CustomAttributeRepository" />
+</config>

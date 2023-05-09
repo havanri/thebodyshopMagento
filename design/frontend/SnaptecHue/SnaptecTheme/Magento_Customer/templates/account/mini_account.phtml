@@ -1,0 +1,30 @@
+<?php if ($block->getCustomerIsLoggedIn()) : ?>
+    <?php
+    $customerName = $block->getCustomerName();
+    $customerEmail = $block->getCustomerEmail();
+    ?>
+    <li class="list-li">
+        <div id="person-container">
+            <i class="bi bi-person" id="person-icon"></i>
+            <div id="person-dropdown">
+                <div class="infor-customer">
+                    <p>You are now logged in as:</p>
+                    <div class="customer-name"><?php echo $customerName; ?></div>
+                    <div class="customer-email"><?php echo $customerEmail; ?></div>
+                </div>
+                
+                <div class="action-custom">
+                    <a href="<?php echo $block->getUrl('customer/account'); ?>"><?php echo __('My Account'); ?></a>
+                    <a href="<?php echo $block->getUrl('customer/account/logout'); ?>"><?php echo __('Sign Out'); ?></a>
+                </div>
+            </div>
+        </div>
+    </li>
+<?php else : 
+    ?>
+    <li class="list-li">
+        <a href="<?php echo $block->getUrl('customer/account') ?>">
+            <i class="bi bi-person"></i>
+        </a>
+    </li>
+<?php endif; ?>

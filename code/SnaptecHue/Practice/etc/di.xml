@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Framework\Message\ManagerInterface" type="Magento\Framework\Message\Manager" />
+	<preference for="Magento\Framework\Session\Config\ConfigInterface" type="Magento\Framework\Session\Config" />
+	<preference for="Magento\Framework\Stdlib\CookieManagerInterface" type="Magento\Framework\Stdlib\Cookie\PhpCookieManager" />
+	<preference for="Psr\Log\LoggerInterface" type="Magento\Framework\Logger\Monolog" />
+</config>

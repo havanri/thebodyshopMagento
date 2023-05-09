@@ -1,0 +1,25 @@
+
+<div class="shopbycate" style="background-color: #004236!important;">
+    <div class="container" style="max-width: 1440px;
+    padding-left: 15px;
+    padding-right: 15px;">
+        <div class="row">
+            <div class="col-md-12" style="padding-right: 105px;
+    padding-left: 105px;
+    margin: 0 auto;padding-bottom: 30px;">
+                <h2 class="filterproduct-title" style="margin: 25px 0 15px;padding-bottom: 10px;"><span class="content" style="color:#fff;font-size:30px;"><strong>New Brand</strong></span></h2>
+                <div class="category-list owl-carousel owl-theme owl-loaded owl-drag" style=" display: flex;
+    flex-wrap: nowrap;border-bottom: 3px solid white;">
+                    <?php foreach ($this->getBrands() as $brand) : ?>
+                        <div class="category-item" style="flex: 0 0 auto;">
+                            <a href="" style="text-decoration:none;">
+                                <img src="<?php echo 'http://localhost/thebodyshop/pub/media/brand/images/' . $brand->getImage(); ?>" alt="<?php echo $brand->getTitle(); ?>" />
+                                <h2 style="text-decoration:none;"><?php echo $brand->getTitle(); ?></h2>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

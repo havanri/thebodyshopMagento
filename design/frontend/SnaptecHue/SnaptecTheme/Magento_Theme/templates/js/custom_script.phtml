@@ -1,0 +1,65 @@
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'js/owl.carousel.min'
+    ], function($) {
+        $('.products-list').owlCarousel({
+            items: 5,
+            loop: true,
+            margin: 0,
+            nav: true,
+            dots: false,
+            autoplay: false,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 5
+                }
+            }
+        });
+        $('.category-list').owlCarousel({
+            items: 4,
+            loop: true,
+            margin: 0,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 4
+                }
+            }
+        });
+        $('.banner-list').owlCarousel({
+            loop: true,
+            dots: false,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        });
+    });
+</script>

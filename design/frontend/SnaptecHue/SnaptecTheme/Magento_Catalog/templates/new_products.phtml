@@ -1,0 +1,45 @@
+<?php
+/** @var SnaptecHue\Catalog\Block\Product */
+$products = $block->getNewProducts();
+?>
+<div class="shopbycate" style="background-color: #fff!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="margin: 0 auto;padding-bottom: 30px;">
+                <h2 class="filterproduct-title"><span class="content" style="color:#004236;font-size:30px;"><strong>New Products</strong></span></h2>
+                <div class="best-sellers">
+                    <div class="products-list owl-carousel owl-theme owl-loaded owl-drag">
+                        <?php foreach ($products as $product) : ?>
+                            <div class="product-item" style="padding: 12px 10px!important;">
+                                <div class="product-image">
+                                    <a href="<?= $product->getProductUrl(); ?>">
+                                        <img style="height:340px!important;width:220px!important;" src="<?= BASE_MEDIA_URL . $product->getImage(); ?>" alt="<?= $product->getName(); ?>">
+                                    </a>
+                                </div>
+                                <div class="product-info" style="text-align:left!important;">
+                                    <div class="product-name">
+                                        <a href="<?= $product->getProductUrl(); ?>">
+                                            <?= __($product->getName()); ?>
+                                        </a>
+                                    </div>
+                                    <div class="product-price" style="margin-bottom: 10px;">
+                                        <?= $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($product->getPriceInfo()->getPrice('final_price')->getValue(), true, false); ?>
+                                    </div>
+                                    <div class="product-actions">
+                                        <form data-role="tocart-form" action="<?= $this->getUrl('checkout/cart/add', ['product' => $product->getId()]); ?>" method="post">
+                                            <input type="hidden" name="product" value="<?= $product->getId(); ?>">
+                                            <input type="hidden" name="form_key" value="<?= $this->getFormKey(); ?>">
+                                            <button type="submit" title="<?= __('Add to Cart'); ?>" class="action tocart primary">
+                                                <span><?= __('Add to Cart'); ?></span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

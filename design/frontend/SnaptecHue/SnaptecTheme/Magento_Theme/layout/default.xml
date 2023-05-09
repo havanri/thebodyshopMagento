@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright © Magento, Inc. All rights reserved.
+* See COPYING.txt for license details.
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+        <referenceContainer name="columns.top">
+            <block class="Magento\Theme\Block\Html\Title" name="page.main.title" template="Magento_Theme::html/title.phtml"/>
+            <container name="page.messages" htmlTag="div" htmlClass="page messages">
+                <block class="Magento\Framework\View\Element\Template" name="ajax.message.placeholder" template="Magento_Theme::html/messages.phtml"/>
+                <block class="Magento\Framework\View\Element\Messages" name="messages" as="messages" template="Magento_Theme::messages.phtml"/>
+            </container>
+        </referenceContainer>
+		<referenceContainer name="header.container">
+			<container name="header-wrapper" label="Page Header" as="header-wrapper" before="-" htmlTag="div" htmlClass="header content">
+				<container name="header-row" label="Header Row" as="header-row" htmlTag="div" htmlClass="row">
+					<block class="Magento\Store\Block\Switcher" name="header.content.left" template="Magento_Theme::header_content_left.phtml">
+						<arguments>
+							<argument name="view_model" xsi:type="object">
+								Magento\Store\ViewModel\SwitcherUrlProvider
+							</argument>
+						</arguments>
+					</block>
+					<block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+						<arguments>
+							<argument name="logoPathResolver" xsi:type="object">
+								Magento\Theme\ViewModel\Block\Html\Header\LogoPathResolver
+							</argument>
+							<argument name="logo_size_resolver" xsi:type="object">
+								Magento\Theme\ViewModel\Block\Html\Header\LogoSizeResolver
+							</argument>
+						</arguments>
+					</block>
+					<container name="header.content.right" label="Header Content Right" htmlTag="div" htmlClass="col-lg-4" after="logo">
+						<container name="list.icon.header" label="List Icon Header" htmlTag="ul" htmlClass="list-header">
+							<block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" before="-">
+							</block>
+							<block class="SnaptecHue\Customer\Block\CustomerCustomInfo" name="top.account" template="Magento_Customer::account/mini_account.phtml" after="top.search">
+							</block>
+							<block class="Magento\Wishlist\Block\Customer\Sidebar" name="wishlist_sidebar" as="wishlist" template="Magento_Wishlist::mini_wishlist.phtml" ifconfig="wishlist/general/show_in_sidebar">
+								<arguments>
+									<argument name="wishlistDataViewModel" xsi:type="object">
+										Magento\Wishlist\ViewModel\WishlistData
+									</argument>
+								</arguments>
+							</block>
+						</container>
+					</container>
+				</container>
+			</container>
+			<block class="Magento\Framework\View\Element\Template" name="navigation.sections" after="header-wrapper" template="Magento_Theme::sections.phtml">
+				<arguments>
+					<argument name="group_name" xsi:type="string">
+						navigation-sections
+					</argument>
+					<argument name="group_css" xsi:type="string">
+						nav-sections
+					</argument>
+				</arguments>
+				<block class="Magento\Framework\View\Element\Template" name="store.menu" group="navigation-sections" template="Magento_Theme::container.phtml">
+					<arguments>
+						<argument name="title" translate="true" xsi:type="string">
+							Menu
+						</argument>
+					</arguments>
+					<block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="Magento_Theme::topmenu.phtml" ttl="3600" before="-" />
+				</block>
+			</block>
+			<container name="header.panel.wrapper" htmlClass="panel wrapper" htmlTag="div" after="navigation.sections">
+				<container name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="panel header">
+					<block class="Magento\Framework\View\Element\Template" name="skip_to_content" template="Magento_Theme::html/skip.phtml">
+						<arguments>
+							<argument name="target" xsi:type="string">
+								contentarea
+							</argument>
+							<argument name="label" translate="true" xsi:type="string">
+								Skip to
+								Content
+							</argument>
+						</arguments>
+					</block>
+					<block class="Magento\Customer\Block\Account\Navigation" name="top.links">
+						<arguments>
+							<argument name="css_class" xsi:type="string">
+								header links
+							</argument>
+						</arguments>
+					</block>
+				</container>
+			</container>
+		</referenceContainer>
+		<referenceContainer name="header.panel">
+			<block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+				<arguments>
+					<argument name="css_class" xsi:type="string">
+						header links
+					</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+		<referenceContainer name="footer">
+			<referenceBlock name="footer_links" remove="true" />
+			<block class="Magento\Framework\View\Element\Template" name="footer.navigation.menu" before="-" template="Magento_Theme::footer_menu.phtml" />
+			<block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="Magento_Store::switch/stores.phtml" />
+		</referenceContainer>
+		<referenceBlock name="report.bugs" remove="true" />
+		<move element="copyright" destination="before.body.end" />
+		<move element="modal.search.custom" destination="before.body.end" />
+		<referenceBlock name="copyright">
+			<action method="setTemplate">
+				<argument name="template" xsi:type="string">
+					Magento_Theme::copyright.phtml
+				</argument>
+			</action>
+		</referenceBlock>
+		<referenceBlock name="logo">
+			<action method="setTemplate">
+				<argument name="template" xsi:type="string">
+					Magento_Theme::html/header/logo.phtml
+				</argument>
+			</action>
+		</referenceBlock>
+		<referenceContainer name="before.body.end">
+			<block class="\Magento\Framework\View\Element\Template" template="Magento_Theme::js/custom_script.phtml" name="module_js" />
+		</referenceContainer>
+		<block class="Magento\Framework\View\Element\Template" name="modal.search.custom" template="Magento_Search::modal_search.phtml">
+			<arguments>
+				<argument name="configProvider" xsi:type="object">
+					Magento\Search\ViewModel\ConfigProvider
+				</argument>
+				<argument name="additionalSearchFormData" xsi:type="object">
+					Magento\Search\ViewModel\AdditionalSearchFormData
+				</argument>
+			</arguments>
+		</block>
+		<move element="minicart" destination="list.icon.header" />
+	</body>
+</page>
